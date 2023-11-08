@@ -20,10 +20,10 @@
                 <div>
                     <ul class="navbar-nav d-flex flex-row">
                         <li class="nav-item mx-3">
-                          <a class="nav-link" href="#">entrar</a>
+                          <a class="nav-link" href="/cadastrousuario">entrar</a>
                         </li>
                         <li class="nav-item mx-3">
-                          <a class="nav-link" href="#">cadastrar usuario</a>
+                          <a class="nav-link" href="/cadastroprodutolivraria">cadastrar usuario</a>
                         </li>
                     </ul>
                 </div>
@@ -35,7 +35,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <h2 class="text-center">Cadastro de Produto de Livraria</h2>
-                    <form method="post" action="">
+                    <form method="post" action="/cadastroprodutolivraria">
                         <div class="mb-3">
                             <label for="id_produtolivraria" class="form-label">ID do Produto</label>
                             <input type="text" class="form-control" id="id_produtolivraria" name="id_produtolivraria" placeholder="ID do Produto" required>
@@ -50,11 +50,11 @@
                         </div>
                         <div class="mb-3">
                             <label for="data_impressao" class="form-label">Data de Impressão</label>
-                            <input type="text" class="form-control" id="data_impressao" name="dataimpressao" required>
+                            <input type="text" class="form-control" id="data_impressao" name="dataDeImpressao" required>
                         </div>
                         <div class="mb-3">
                             <label for="quantidade_estoque" class="form-label">Quantidade em Estoque</label>
-                            <input type="number" class="form-control" id="quantidade_estoque" name="qntestoque" placeholder="Quantidade em Estoque" required>
+                            <input type="number" class="form-control" id="quantidade_estoque" name="qntEstoque" placeholder="Quantidade em Estoque" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Cadastrar Produto</button>
                     </form>

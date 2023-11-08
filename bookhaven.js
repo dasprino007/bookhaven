@@ -59,11 +59,21 @@ app.post("/cadastrousuario", async (req, res) => {
         email: email,
         senha : senha
     });
+
+    const emailExiste = await Usuario.findOne({email : email}) 
+
     if(email == null || senha == null){
         res.status(400).json({
             error: "prencha todos os campos"
         });
     }
+
+    else if(emailExiste){
+        res.status(400).json({
+            error: "o email ja existe"
+        });
+    }
+
     try {
         const newUsuario = await await usuario.save();
         res.status(400).json({
@@ -90,11 +100,21 @@ app.post("/cadastroprodutolivraria", async (req, res) => {
         qntEstoque : qntEstoque,
     });
     
+    const id_produtolivrariaExiste = await Produtolivraria.findOne({id_produtolivraria : id_produtolivraria})
+
     if(id_produtolivraria == null || descricao == null || editora == null || dataDeImpressao == null || qntEstoque == null){
         res.status(400).json({
             error: "prencha todos os campos"
         });}
-
+    else if(id_produtolivrariaExiste){
+                res.status(400).json({
+            error: "prencha todos os campos"
+        });}
+    else if(qntEstoque > 44){
+        res.status(400).json({
+            error: "limite do estoque é de 44"
+        });}
+    }
     try {
         const newProdutolivraria = await produtolivraria.save();
         return res.json({
@@ -106,7 +126,15 @@ app.post("/cadastroprodutolivraria", async (req, res) => {
 });
 
 app.get("/", async(req, res)=>{
-    res.json({error: null,msg: "bem vindo"})
+    res.sendFile(__dirname + "/index.html")
+});
+
+app.get("/cadastrousuario", async(req, res)=>{
+    res.sendFile(__dirname + "/login.html")
+});
+
+app.get("/cadastroprodutolivraria", async(req, res)=>{
+    res.sendFile(__dirname + "/cadastrar.html")
 });
 
 app.listen(port, (res, req) => {

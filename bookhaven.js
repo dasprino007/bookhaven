@@ -112,9 +112,8 @@ app.post("/cadastroprodutolivraria", async (req, res) => {
         });}
     else if(qntEstoque > 44){
         res.status(400).json({
-            error: "limite do estoque é de 44"
+            error: "limite do"
         });}
-    }
     try {
         const newProdutolivraria = await produtolivraria.save();
         return res.json({

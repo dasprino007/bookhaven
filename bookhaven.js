@@ -73,7 +73,7 @@ app.post("/cadastrousuario", async (req, res) => {
             error: "o email ja existe"
         });
     }
-
+else{
     try {
         const newUsuario = await await usuario.save();
         res.status(400).json({
@@ -82,6 +82,7 @@ app.post("/cadastrousuario", async (req, res) => {
             UsuarioId: newUsuario._id
         });
     } catch (error) {}
+}
 });
 
 app.post("/cadastroprodutolivraria", async (req, res) => {
@@ -114,14 +115,16 @@ app.post("/cadastroprodutolivraria", async (req, res) => {
         res.status(400).json({
             error: "limite do alcançado coloque a menos ou igual a 44"
         });}
-    try {
-        const newProdutolivraria = await produtolivraria.save();
-        return res.json({
-            error: null,
-            msg: "Cadastro ok",
-            UsuarioId: newProdutolivraria._id
-        });
-    } catch (error) {}
+    else{
+        try {
+            const newProdutolivraria = await produtolivraria.save();
+            return res.json({
+                error: null,
+                msg: "Cadastro ok",
+                UsuarioId: newProdutolivraria._id
+            });
+        } catch (error) {}
+    }
 });
 
 app.get("/", async(req, res)=>{

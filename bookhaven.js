@@ -59,6 +59,11 @@ app.post("/cadastrousuario", async (req, res) => {
         email: email,
         senha : senha
     });
+    if(email == null || senha == null){
+        res.status(400).json({
+            error: "prencha todos os campos"
+        });
+    }
     try {
         const newUsuario = await await usuario.save();
         res.status(400).json({
@@ -84,6 +89,12 @@ app.post("/cadastroprodutolivraria", async (req, res) => {
         dataDeImpressao : dataDeImpressao,
         qntEstoque : qntEstoque,
     });
+    
+    if(id_produtolivraria == null || descricao == null || editora == null || dataDeImpressao == null || qntEstoque == null){
+        res.status(400).json({
+            error: "prencha todos os campos"
+        });}
+
     try {
         const newProdutolivraria = await produtolivraria.save();
         return res.json({
